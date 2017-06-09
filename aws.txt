@@ -1,0 +1,9 @@
+var Aws =require('aws-sdk');
+exports.handler =function(event,context){
+    var ec2 =new AWS.EC2({region: 'us-east-1b'});
+    ec2.startInstances({InstanceIds : [ 'i-090dd604afa86f495']}, function (err, data){
+        if(err) console.log(err, err.stack);    //error occured
+        else console.log(data);  //successful response
+        context.done(err,data);
+    });
+};
